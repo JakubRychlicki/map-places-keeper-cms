@@ -3,6 +3,8 @@ services:
     name: strapi
     env: node
     plan: starter
+    region: frankfurt
+    branch: master
     buildCommand: yarn install && yarn build
     startCommand: yarn start
     healthCheckPath: /_health
@@ -29,5 +31,5 @@ services:
         generateValue: true
 
 databases:
-  - name: strapi
+  - name: strapi-cms
     plan: starter
