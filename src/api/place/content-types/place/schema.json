@@ -45,14 +45,17 @@
     "country": {
       "type": "string"
     },
-    "category": {
-      "type": "string"
-    },
     "latitude": {
       "type": "float"
     },
     "longitude": {
       "type": "float"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::default-category.default-category",
+      "inversedBy": "places"
     }
   }
 }

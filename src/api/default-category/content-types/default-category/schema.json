@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "default_categories",
+  "info": {
+    "singularName": "default-category",
+    "pluralName": "default-categories",
+    "displayName": "DefaultCategories",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "text"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "places": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::place.place",
+      "mappedBy": "category"
+    }
+  }
+}
