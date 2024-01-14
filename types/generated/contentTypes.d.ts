@@ -374,10 +374,31 @@ export interface ApiDefaultCategoryDefaultCategory
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    name: Attribute.String;
-    icon: Attribute.Text;
-    order: Attribute.Integer & Attribute.DefaultTo<0>;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    icon: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<0>;
     places: Attribute.Relation<
       'api::default-category.default-category',
       'oneToMany',
@@ -398,6 +419,12 @@ export interface ApiDefaultCategoryDefaultCategory
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::default-category.default-category',
+      'oneToMany',
+      'api::default-category.default-category'
+    >;
+    locale: Attribute.String;
   };
 }
 
